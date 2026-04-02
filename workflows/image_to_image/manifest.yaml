@@ -1,0 +1,46 @@
+name: image_to_image
+display_name: "Image to Image"
+description: "Transform an existing image guided by a text prompt"
+category: generation
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    description: "Text description of desired transformation"
+  - name: negative_prompt
+    type: string
+    required: false
+    default: ""
+    description: "What to avoid"
+  - name: image
+    type: string
+    required: true
+    description: "Input image filename (uploaded to ComfyUI)"
+  - name: strength
+    type: float
+    required: false
+    default: 0.75
+    description: "How much to change the image (0.0-1.0)"
+  - name: steps
+    type: integer
+    required: false
+    default: 20
+    description: "Number of sampling steps"
+  - name: cfg_scale
+    type: float
+    required: false
+    default: 7.0
+    description: "Guidance scale"
+  - name: seed
+    type: integer
+    required: false
+    default: -1
+    description: "Random seed (-1 for random)"
+node_mappings:
+  prompt: ["6.inputs.text"]
+  negative_prompt: ["7.inputs.text"]
+  image: ["10.inputs.image"]
+  strength: ["3.inputs.denoise"]
+  steps: ["3.inputs.steps"]
+  cfg_scale: ["3.inputs.cfg"]
+  seed: ["3.inputs.seed"]

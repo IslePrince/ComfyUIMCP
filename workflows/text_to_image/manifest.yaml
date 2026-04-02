@@ -1,0 +1,55 @@
+name: text_to_image
+display_name: "Text to Image"
+description: "Generate an image from a text prompt using Stable Diffusion"
+category: generation
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    description: "Text description of the desired image"
+  - name: negative_prompt
+    type: string
+    required: false
+    default: ""
+    description: "What to avoid in the image"
+  - name: width
+    type: integer
+    required: false
+    default: 1024
+    description: "Image width in pixels"
+  - name: height
+    type: integer
+    required: false
+    default: 1024
+    description: "Image height in pixels"
+  - name: steps
+    type: integer
+    required: false
+    default: 20
+    min: 1
+    max: 50
+    description: "Number of sampling steps"
+  - name: cfg_scale
+    type: float
+    required: false
+    default: 7.0
+    description: "Classifier-free guidance scale"
+  - name: seed
+    type: integer
+    required: false
+    default: -1
+    description: "Random seed (-1 for random)"
+  - name: checkpoint
+    type: string
+    required: false
+    default: "juggernautXL_ragnarokBy.safetensors"
+    description: "Model checkpoint filename"
+node_mappings:
+  prompt: ["6.inputs.text"]
+  negative_prompt: ["7.inputs.text"]
+  width: ["5.inputs.width"]
+  height: ["5.inputs.height"]
+  steps: ["3.inputs.steps"]
+  cfg_scale: ["3.inputs.cfg"]
+  seed: ["3.inputs.seed"]
+  checkpoint: ["4.inputs.ckpt_name"]

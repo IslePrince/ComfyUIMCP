@@ -1,0 +1,17 @@
+name: upscale
+display_name: "Upscale Image"
+description: "Upscale an image to higher resolution using an AI upscaler model"
+category: enhancement
+parameters:
+  - name: image
+    type: string
+    required: true
+    description: "Input image filename (uploaded to ComfyUI)"
+  - name: model
+    type: string
+    required: false
+    default: "RealESRGAN_x2.pth"
+    description: "Upscale model to use"
+node_mappings:
+  image: ["1.inputs.image"]
+  model: ["2.inputs.model_name"]

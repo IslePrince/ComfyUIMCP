@@ -1,0 +1,14 @@
+services:
+  mcp:
+    build: ./mcp_server
+    ports:
+      - "8199:8199"
+    volumes:
+      - ./output:/app/output
+      - ./input:/app/input
+      - ./workflows:/app/workflows:ro
+    env_file:
+      - .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped

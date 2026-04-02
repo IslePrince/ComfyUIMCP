@@ -1,0 +1,58 @@
+name: style_transfer
+display_name: "IPAdapter Style Transfer"
+description: "Generate an image guided by a reference style image using IPAdapter. Transfers the visual style from a reference image while following the text prompt for content."
+category: generation
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    description: "Text description of the desired image content"
+  - name: negative_prompt
+    type: string
+    required: false
+    default: ""
+    description: "What to avoid"
+  - name: style_image
+    type: string
+    required: true
+    description: "Reference style image filename (uploaded to ComfyUI)"
+  - name: weight
+    type: float
+    required: false
+    default: 0.6
+    description: "Style influence strength (0.0-1.0, higher = more style)"
+  - name: width
+    type: integer
+    required: false
+    default: 1024
+    description: "Output width"
+  - name: height
+    type: integer
+    required: false
+    default: 1024
+    description: "Output height"
+  - name: steps
+    type: integer
+    required: false
+    default: 25
+    description: "Sampling steps"
+  - name: cfg_scale
+    type: float
+    required: false
+    default: 7.0
+    description: "Guidance scale"
+  - name: seed
+    type: integer
+    required: false
+    default: -1
+    description: "Random seed (-1 for random)"
+node_mappings:
+  prompt: ["2.inputs.text"]
+  negative_prompt: ["3.inputs.text"]
+  style_image: ["11.inputs.image"]
+  weight: ["12.inputs.weight"]
+  width: ["4.inputs.width"]
+  height: ["4.inputs.height"]
+  steps: ["5.inputs.steps"]
+  cfg_scale: ["5.inputs.cfg"]
+  seed: ["5.inputs.seed"]

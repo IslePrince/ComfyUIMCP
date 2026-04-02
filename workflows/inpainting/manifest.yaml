@@ -1,0 +1,51 @@
+name: inpainting
+display_name: "Inpainting"
+description: "Fill in or replace parts of an image using a mask and text prompt"
+category: editing
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    description: "Text description of what to paint in the masked area"
+  - name: negative_prompt
+    type: string
+    required: false
+    default: ""
+    description: "What to avoid"
+  - name: image
+    type: string
+    required: true
+    description: "Input image filename (uploaded to ComfyUI)"
+  - name: mask
+    type: string
+    required: true
+    description: "Mask image filename (white = area to repaint)"
+  - name: steps
+    type: integer
+    required: false
+    default: 20
+    description: "Sampling steps"
+  - name: cfg_scale
+    type: float
+    required: false
+    default: 7.0
+    description: "Guidance scale"
+  - name: seed
+    type: integer
+    required: false
+    default: -1
+    description: "Random seed (-1 for random)"
+  - name: strength
+    type: float
+    required: false
+    default: 1.0
+    description: "Denoise strength (0.0-1.0)"
+node_mappings:
+  prompt: ["6.inputs.text"]
+  negative_prompt: ["7.inputs.text"]
+  image: ["10.inputs.image"]
+  mask: ["12.inputs.image"]
+  steps: ["3.inputs.steps"]
+  cfg_scale: ["3.inputs.cfg"]
+  seed: ["3.inputs.seed"]
+  strength: ["3.inputs.denoise"]

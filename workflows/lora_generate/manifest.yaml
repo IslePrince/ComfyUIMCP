@@ -1,0 +1,58 @@
+name: lora_generate
+display_name: "LoRA Character Generation"
+description: "Generate images using a character LoRA. Include the trigger word (e.g. 'kobbi_char') in your prompt. Available character LoRAs: algamish_char, arad_gula_char, arkad_char, bansir_char, dabasir_char, kalabab_char, kobbi_char, mathon_char, nomasir_char, rodan_char, sharru_nada_char, swasti_char, tarkad_char, and many more."
+category: generation
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    description: "Text prompt - include the trigger word (e.g. 'kobbi_char, a warrior standing...')"
+  - name: negative_prompt
+    type: string
+    required: false
+    default: ""
+    description: "What to avoid"
+  - name: lora_name
+    type: string
+    required: true
+    description: "LoRA filename (e.g. 'kobbi_char.safetensors')"
+  - name: lora_strength
+    type: float
+    required: false
+    default: 0.8
+    description: "LoRA strength (0.0-1.0)"
+  - name: width
+    type: integer
+    required: false
+    default: 1024
+    description: "Image width"
+  - name: height
+    type: integer
+    required: false
+    default: 1024
+    description: "Image height"
+  - name: steps
+    type: integer
+    required: false
+    default: 25
+    description: "Sampling steps"
+  - name: cfg_scale
+    type: float
+    required: false
+    default: 7.0
+    description: "Guidance scale"
+  - name: seed
+    type: integer
+    required: false
+    default: -1
+    description: "Random seed (-1 for random)"
+node_mappings:
+  prompt: ["3.inputs.text"]
+  negative_prompt: ["4.inputs.text"]
+  lora_name: ["2.inputs.lora_name"]
+  lora_strength: ["2.inputs.strength_model"]
+  width: ["5.inputs.width"]
+  height: ["5.inputs.height"]
+  steps: ["6.inputs.steps"]
+  cfg_scale: ["6.inputs.cfg"]
+  seed: ["6.inputs.seed"]

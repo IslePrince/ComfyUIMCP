@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "comfyui": {
+      "url": "http://localhost:8199/mcp"
+    }
+  }
+}
